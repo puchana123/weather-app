@@ -4,7 +4,7 @@ import {useState,useEffect} from 'react'
 function App() {
 
   const name = 'Chiang Mai'
-  const apikey = '2fc4bbf1cac526e6de77ab2f01c340f3'
+  const apikey = process.env.REACT_APP_API_KEY // your api key
   const [city,setCity] = useState([])
   const [isLoading,setIsLoading] = useState(false)
 
@@ -17,9 +17,8 @@ function App() {
       setCity(data)
       setIsLoading(true)
     })
- 
 
-  },[])
+  },[apikey])
 
   return (
     (isLoading&& <div className="App">
